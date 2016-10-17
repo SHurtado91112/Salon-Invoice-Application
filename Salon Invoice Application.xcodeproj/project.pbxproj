@@ -7,21 +7,64 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		282182171D5D7958006442AA /* InvoiceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 282182161D5D7958006442AA /* InvoiceViewController.swift */; };
+		2881F92A1D83644E006C4DD5 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2881F9291D83644E006C4DD5 /* HomeViewController.swift */; };
+		2881F92C1D836BAC006C4DD5 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2881F92B1D836BAC006C4DD5 /* SettingsViewController.swift */; };
 		2887FF321D5A8B730066C24F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2887FF311D5A8B730066C24F /* AppDelegate.swift */; };
-		2887FF341D5A8B730066C24F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2887FF331D5A8B730066C24F /* ViewController.swift */; };
 		2887FF371D5A8B730066C24F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2887FF351D5A8B730066C24F /* Main.storyboard */; };
 		2887FF391D5A8B730066C24F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2887FF381D5A8B730066C24F /* Assets.xcassets */; };
 		2887FF3C1D5A8B730066C24F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2887FF3A1D5A8B730066C24F /* LaunchScreen.storyboard */; };
+		2887FF441D5AA1120066C24F /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 2887FF431D5AA1120066C24F /* libsqlite3.0.tbd */; };
+		2887FF521D5AA5E30066C24F /* ModelManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2887FF511D5AA5E30066C24F /* ModelManager.swift */; };
+		2887FF541D5AA60B0066C24F /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2887FF531D5AA60B0066C24F /* Util.swift */; };
+		2887FF561D5AA6650066C24F /* ClientInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2887FF551D5AA6650066C24F /* ClientInfo.swift */; };
+		2887FF591D5AA6BE0066C24F /* ClientCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2887FF581D5AA6BE0066C24F /* ClientCell.swift */; };
+		2887FF671D5AA7340066C24F /* FMDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = 2887FF5C1D5AA7340066C24F /* FMDatabase.m */; };
+		2887FF681D5AA7340066C24F /* FMDatabaseAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 2887FF5E1D5AA7340066C24F /* FMDatabaseAdditions.m */; };
+		2887FF691D5AA7340066C24F /* FMDatabasePool.m in Sources */ = {isa = PBXBuildFile; fileRef = 2887FF601D5AA7340066C24F /* FMDatabasePool.m */; };
+		2887FF6A1D5AA7340066C24F /* FMDatabaseQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 2887FF621D5AA7340066C24F /* FMDatabaseQueue.m */; };
+		2887FF6B1D5AA7340066C24F /* FMResultSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 2887FF651D5AA7340066C24F /* FMResultSet.m */; };
+		2887FF6C1D5AA7340066C24F /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2887FF661D5AA7340066C24F /* Info.plist */; };
+		2887FF711D5AA8B20066C24F /* NewClientViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2887FF701D5AA8B20066C24F /* NewClientViewController.swift */; };
+		2887FF731D5AA8FA0066C24F /* ListClientViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2887FF721D5AA8FA0066C24F /* ListClientViewController.swift */; };
+		2887FF751D5AA94A0066C24F /* ServicesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2887FF741D5AA94A0066C24F /* ServicesViewController.swift */; };
+		2887FF771D5AAC2F0066C24F /* Salon.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 2887FF761D5AAC2F0066C24F /* Salon.sqlite */; };
+		289F30471D5FD5C200E54B0D /* InvoiceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 289F30461D5FD5C200E54B0D /* InvoiceCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		282182161D5D7958006442AA /* InvoiceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InvoiceViewController.swift; sourceTree = "<group>"; };
+		2881F9291D83644E006C4DD5 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		2881F92B1D836BAC006C4DD5 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		2887FF2E1D5A8B730066C24F /* Salon Invoice Application.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Salon Invoice Application.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		2887FF311D5A8B730066C24F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		2887FF331D5A8B730066C24F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		2887FF311D5A8B730066C24F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = "Salon Invoice Application/AppDelegate.swift"; sourceTree = "<group>"; };
 		2887FF361D5A8B730066C24F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		2887FF381D5A8B730066C24F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2887FF3B1D5A8B730066C24F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2887FF3D1D5A8B730066C24F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2887FF431D5AA1120066C24F /* libsqlite3.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.0.tbd; path = usr/lib/libsqlite3.0.tbd; sourceTree = SDKROOT; };
+		2887FF511D5AA5E30066C24F /* ModelManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ModelManager.swift; path = "Salon Invoice Application/ModelManager.swift"; sourceTree = "<group>"; };
+		2887FF531D5AA60B0066C24F /* Util.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Util.swift; path = "Salon Invoice Application/Util.swift"; sourceTree = "<group>"; };
+		2887FF551D5AA6650066C24F /* ClientInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ClientInfo.swift; path = "Salon Invoice Application/ClientInfo.swift"; sourceTree = "<group>"; };
+		2887FF581D5AA6BE0066C24F /* ClientCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ClientCell.swift; path = "Salon Invoice Application/ClientCell.swift"; sourceTree = "<group>"; };
+		2887FF5A1D5AA7340066C24F /* Salon Invoice Application-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Salon Invoice Application-Bridging-Header.h"; sourceTree = "<group>"; };
+		2887FF5B1D5AA7340066C24F /* FMDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FMDatabase.h; path = ../DatabaseExampleSwift/DatabaseExampleSwift/fmdb/FMDatabase.h; sourceTree = "<group>"; };
+		2887FF5C1D5AA7340066C24F /* FMDatabase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FMDatabase.m; path = ../DatabaseExampleSwift/DatabaseExampleSwift/fmdb/FMDatabase.m; sourceTree = "<group>"; };
+		2887FF5D1D5AA7340066C24F /* FMDatabaseAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FMDatabaseAdditions.h; path = ../DatabaseExampleSwift/DatabaseExampleSwift/fmdb/FMDatabaseAdditions.h; sourceTree = "<group>"; };
+		2887FF5E1D5AA7340066C24F /* FMDatabaseAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FMDatabaseAdditions.m; path = ../DatabaseExampleSwift/DatabaseExampleSwift/fmdb/FMDatabaseAdditions.m; sourceTree = "<group>"; };
+		2887FF5F1D5AA7340066C24F /* FMDatabasePool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FMDatabasePool.h; path = ../DatabaseExampleSwift/DatabaseExampleSwift/fmdb/FMDatabasePool.h; sourceTree = "<group>"; };
+		2887FF601D5AA7340066C24F /* FMDatabasePool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FMDatabasePool.m; path = ../DatabaseExampleSwift/DatabaseExampleSwift/fmdb/FMDatabasePool.m; sourceTree = "<group>"; };
+		2887FF611D5AA7340066C24F /* FMDatabaseQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FMDatabaseQueue.h; path = ../DatabaseExampleSwift/DatabaseExampleSwift/fmdb/FMDatabaseQueue.h; sourceTree = "<group>"; };
+		2887FF621D5AA7340066C24F /* FMDatabaseQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FMDatabaseQueue.m; path = ../DatabaseExampleSwift/DatabaseExampleSwift/fmdb/FMDatabaseQueue.m; sourceTree = "<group>"; };
+		2887FF631D5AA7340066C24F /* FMDB.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FMDB.h; path = ../DatabaseExampleSwift/DatabaseExampleSwift/fmdb/FMDB.h; sourceTree = "<group>"; };
+		2887FF641D5AA7340066C24F /* FMResultSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FMResultSet.h; path = ../DatabaseExampleSwift/DatabaseExampleSwift/fmdb/FMResultSet.h; sourceTree = "<group>"; };
+		2887FF651D5AA7340066C24F /* FMResultSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FMResultSet.m; path = ../DatabaseExampleSwift/DatabaseExampleSwift/fmdb/FMResultSet.m; sourceTree = "<group>"; };
+		2887FF661D5AA7340066C24F /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = ../DatabaseExampleSwift/DatabaseExampleSwift/fmdb/Info.plist; sourceTree = "<group>"; };
+		2887FF701D5AA8B20066C24F /* NewClientViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewClientViewController.swift; sourceTree = "<group>"; };
+		2887FF721D5AA8FA0066C24F /* ListClientViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListClientViewController.swift; sourceTree = "<group>"; };
+		2887FF741D5AA94A0066C24F /* ServicesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServicesViewController.swift; sourceTree = "<group>"; };
+		2887FF761D5AAC2F0066C24F /* Salon.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; name = Salon.sqlite; path = "Salon Invoice Application/Salon.sqlite"; sourceTree = "<group>"; };
+		289F30461D5FD5C200E54B0D /* InvoiceCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = InvoiceCell.swift; path = "Salon Invoice Application/InvoiceCell.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,6 +72,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2887FF441D5AA1120066C24F /* libsqlite3.0.tbd in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -38,8 +82,13 @@
 		2887FF251D5A8B730066C24F = {
 			isa = PBXGroup;
 			children = (
+				2887FF311D5A8B730066C24F /* AppDelegate.swift */,
+				2887FF6F1D5AA7D30066C24F /* Manager/Utilities */,
+				2887FF6D1D5AA7B50066C24F /* Resources */,
+				2887FF661D5AA7340066C24F /* Info.plist */,
 				2887FF301D5A8B730066C24F /* Salon Invoice Application */,
 				2887FF2F1D5A8B730066C24F /* Products */,
+				2887FF5A1D5AA7340066C24F /* Salon Invoice Application-Bridging-Header.h */,
 			);
 			sourceTree = "<group>";
 		};
@@ -54,14 +103,58 @@
 		2887FF301D5A8B730066C24F /* Salon Invoice Application */ = {
 			isa = PBXGroup;
 			children = (
-				2887FF311D5A8B730066C24F /* AppDelegate.swift */,
-				2887FF331D5A8B730066C24F /* ViewController.swift */,
+				2887FF701D5AA8B20066C24F /* NewClientViewController.swift */,
+				2881F92B1D836BAC006C4DD5 /* SettingsViewController.swift */,
+				2881F9291D83644E006C4DD5 /* HomeViewController.swift */,
 				2887FF351D5A8B730066C24F /* Main.storyboard */,
+				2887FF721D5AA8FA0066C24F /* ListClientViewController.swift */,
+				2887FF741D5AA94A0066C24F /* ServicesViewController.swift */,
+				282182161D5D7958006442AA /* InvoiceViewController.swift */,
 				2887FF381D5A8B730066C24F /* Assets.xcassets */,
 				2887FF3A1D5A8B730066C24F /* LaunchScreen.storyboard */,
 				2887FF3D1D5A8B730066C24F /* Info.plist */,
 			);
 			path = "Salon Invoice Application";
+			sourceTree = "<group>";
+		};
+		2887FF6D1D5AA7B50066C24F /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				2887FF431D5AA1120066C24F /* libsqlite3.0.tbd */,
+				2887FF6E1D5AA7C30066C24F /* FMDB */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		2887FF6E1D5AA7C30066C24F /* FMDB */ = {
+			isa = PBXGroup;
+			children = (
+				2887FF5B1D5AA7340066C24F /* FMDatabase.h */,
+				2887FF5C1D5AA7340066C24F /* FMDatabase.m */,
+				2887FF5D1D5AA7340066C24F /* FMDatabaseAdditions.h */,
+				2887FF5E1D5AA7340066C24F /* FMDatabaseAdditions.m */,
+				2887FF5F1D5AA7340066C24F /* FMDatabasePool.h */,
+				2887FF601D5AA7340066C24F /* FMDatabasePool.m */,
+				2887FF611D5AA7340066C24F /* FMDatabaseQueue.h */,
+				2887FF621D5AA7340066C24F /* FMDatabaseQueue.m */,
+				2887FF631D5AA7340066C24F /* FMDB.h */,
+				2887FF641D5AA7340066C24F /* FMResultSet.h */,
+				2887FF651D5AA7340066C24F /* FMResultSet.m */,
+			);
+			name = FMDB;
+			sourceTree = "<group>";
+		};
+		2887FF6F1D5AA7D30066C24F /* Manager/Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				2887FF511D5AA5E30066C24F /* ModelManager.swift */,
+				2887FF531D5AA60B0066C24F /* Util.swift */,
+				2887FF551D5AA6650066C24F /* ClientInfo.swift */,
+				2887FF581D5AA6BE0066C24F /* ClientCell.swift */,
+				289F30461D5FD5C200E54B0D /* InvoiceCell.swift */,
+				2887FF761D5AAC2F0066C24F /* Salon.sqlite */,
+			);
+			name = Manager/Utilities;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -96,6 +189,8 @@
 				TargetAttributes = {
 					2887FF2D1D5A8B730066C24F = {
 						CreatedOnToolsVersion = 7.3.1;
+						DevelopmentTeam = E55B666VZ8;
+						LastSwiftMigration = 0800;
 					};
 				};
 			};
@@ -122,6 +217,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2887FF771D5AAC2F0066C24F /* Salon.sqlite in Resources */,
+				2887FF6C1D5AA7340066C24F /* Info.plist in Resources */,
 				2887FF3C1D5A8B730066C24F /* LaunchScreen.storyboard in Resources */,
 				2887FF391D5A8B730066C24F /* Assets.xcassets in Resources */,
 				2887FF371D5A8B730066C24F /* Main.storyboard in Resources */,
@@ -135,8 +232,23 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2887FF341D5A8B730066C24F /* ViewController.swift in Sources */,
+				2887FF711D5AA8B20066C24F /* NewClientViewController.swift in Sources */,
+				289F30471D5FD5C200E54B0D /* InvoiceCell.swift in Sources */,
+				2887FF521D5AA5E30066C24F /* ModelManager.swift in Sources */,
+				2887FF541D5AA60B0066C24F /* Util.swift in Sources */,
+				2887FF751D5AA94A0066C24F /* ServicesViewController.swift in Sources */,
+				2887FF731D5AA8FA0066C24F /* ListClientViewController.swift in Sources */,
+				2887FF591D5AA6BE0066C24F /* ClientCell.swift in Sources */,
+				2887FF671D5AA7340066C24F /* FMDatabase.m in Sources */,
+				2887FF691D5AA7340066C24F /* FMDatabasePool.m in Sources */,
+				282182171D5D7958006442AA /* InvoiceViewController.swift in Sources */,
+				2887FF6A1D5AA7340066C24F /* FMDatabaseQueue.m in Sources */,
+				2881F92A1D83644E006C4DD5 /* HomeViewController.swift in Sources */,
+				2881F92C1D836BAC006C4DD5 /* SettingsViewController.swift in Sources */,
+				2887FF561D5AA6650066C24F /* ClientInfo.swift in Sources */,
+				2887FF6B1D5AA7340066C24F /* FMResultSet.m in Sources */,
 				2887FF321D5A8B730066C24F /* AppDelegate.swift in Sources */,
+				2887FF681D5AA7340066C24F /* FMDatabaseAdditions.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -251,10 +363,15 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = "Salon Invoice Application/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.stevshidae.Salon-Invoice-Application";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Salon Invoice Application-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -262,10 +379,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = "Salon Invoice Application/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.stevshidae.Salon-Invoice-Application";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Salon Invoice Application-Bridging-Header.h";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};
@@ -288,6 +409,7 @@
 				2887FF421D5A8B730066C24F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
