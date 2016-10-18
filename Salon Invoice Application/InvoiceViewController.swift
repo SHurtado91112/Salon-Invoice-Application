@@ -12,8 +12,7 @@ import UIKit
 
 class InvoiceViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
-    var servArray     : [String] = []
-    var priceArray    : [Int] = []
+    var servArray     : [(service: String, price: Int)] = []
     var dateArray     : [String] = []
     var tip : Double = 0
     var total : Double = 0
@@ -71,9 +70,9 @@ class InvoiceViewController: UIViewController, UITableViewDataSource, UITableVie
         
         companyDetails.textColor = backColor
         
-        for i in 0 ..< priceArray.count
+        for i in 0 ..< servArray.count
         {
-            total += Double(priceArray[i])
+            total += Double(servArray[i].price)
         }
     }
 
@@ -127,9 +126,9 @@ class InvoiceViewController: UIViewController, UITableViewDataSource, UITableVie
         {
             cell.backgroundColor = UIColor.white
             
-            cell.serviceLbl.text = servArray[(indexPath as NSIndexPath).row - 1]
+            cell.serviceLbl.text = servArray[(indexPath as NSIndexPath).row - 1].service
             cell.dateLbl.text = dateArray[(indexPath as NSIndexPath).row - 1]
-            cell.amountLbl.text = String(format: "$%.2f", Double(priceArray[(indexPath as NSIndexPath).row - 1]))
+            cell.amountLbl.text = String(format: "$%.2f", Double(servArray[(indexPath as NSIndexPath).row - 1].price))
         }
         
         return cell

@@ -6,22 +6,26 @@
 //  Copyright © 2016 Steven Hurtado. All rights reserved.
 //
 //
-//TO DO: Create dictionary with client name as key, to hold array of services
+//  TO DO: garbage clean up for removal of client
 //
 //
 
 import UIKit
 
-class ServicesViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, UITextFieldDelegate {
+class ServicesViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, UITextFieldDelegate
+{
 
+    let def = UserDefaults.standard
+    var defArray         = [Int]()
+    var defDate          = [String]()
+    
     var clientData : ClientInfo!
     var marrClientData : NSMutableArray!
     
-    var serviceArray     = [String]()
-    var priceArray       = [Int]()
-    var selectPriceArray = [Int]()
+    var serviceArray     = [(service: String, price: Int)]()
+    var selectedArray    = [(service: String, price: Int)]()
     var dateArray        = [String]()
-    var selectedArray    = [String]()
+    
     
     var format = DateFormatter()
     
@@ -59,9 +63,12 @@ class ServicesViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
         picker.dataSource = self
         picker.showsSelectionIndicator = false
         
-        serviceArray = ["Men's Haircut", "Beard or Mustache Trim", "Women's Haircut", "Women's Haircut, Shampoo", "Shampoo Only", "Shampoo & Set", "Shampoo, Blowdry, Style", "Shampoo, Cut, Style", "Color, Shampoo, Style", "Color, Shampoo, Cut, Style", "Permanent", "Highlights, Shampoo, Cut, Style", "Re-Comb", "Regular Manicure", "Pedicure", "French Manicure", "Deluxe Manicure", "Eyebrow Shaping", "Eyebrow Waxing", "Lip Waxing", "Face Waxing", "All Three Waxing"]
+        serviceArray = [("Men's Haircut", 15), ("Beard or Mustache Trim", 5), ("Women's Haircut", 20), ("Women's Haircut, Shampoo", 25), ("Shampoo Only", 5), ("Shampoo & Set", 20), ("Shampoo, Blowdry, Style", 20), ("Shampoo, Cut, Style", 35), ("Color, Shampoo, Style", 45), ("Color, Shampoo, Cut, Style", 55), ("Permanent", 65), ("Highlights, Shampoo, Cut, Style", 65), ("Re-Comb", 5), ("Regular Manicure", 14), ("Pedicure", 25), ("French Manicure", 16), ("Deluxe Manicure", 18), ("Eyebrow Shaping", 7), ("Eyebrow Waxing", 7), ("Lip Waxing", 7), ("Face Waxing", 10), ("All Three Waxing", 18)]
         
-        priceArray = [15,5,20,25,5,20,20,35,45,55,65,65,5,14,25,16,18,7,7,7,10,18]
+        defArray = def.object(forKey: "\(clientData.Name) Index") as? [Int] ?? [Int]()
+        defDate  = def.object(forKey: "\(clientData.Name) Date") as? [String] ?? [String]()
+        
+        loadServices()
         
         addBtn.layer.cornerRadius = 10
         removeBtn.layer.cornerRadius = 10
@@ -102,7 +109,7 @@ class ServicesViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
     
     func pickerView(_ pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString?
     {
-        let titleData = serviceArray[row] + " $" + String(priceArray[row])
+        let titleData = serviceArray[row].service + " $" + String(serviceArray[row].price)
         let myTitle = NSAttributedString(string: titleData, attributes: [NSFontAttributeName:UIFont.systemFont(ofSize: 16, weight: UIFontWeightUltraLight),NSForegroundColorAttributeName:textColor])
         return myTitle
     }
@@ -126,13 +133,34 @@ class ServicesViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
         return 1
     }
     
+    func loadServices()
+    {
+        if(defArray.count > 0)
+        {
+            for index in (0...defArray.count-1)
+            {
+                selectedArray.append(serviceArray[defArray[index]])
+                
+                textView.text! += "\n\(selectedArray[index].service)\n"
+                
+                dateArray.append(defDate[index])
+                i += 1
+            }
+        }
+    }
+    
     @IBAction func addBtnClicked(_ sender: AnyObject)
     {
-        selectedArray.append(serviceArray[selectedRow])
-        selectPriceArray.append(priceArray[selectedRow])
-        dateArray.append(format.string(from: dater.date))
+        print("index: \(i)")
         
-        textView.text! += "\n\(selectedArray[i])\n"
+        selectedArray.append(serviceArray[selectedRow])
+        dateArray.append(format.string(from: dater.date))
+        defArray.append(selectedRow)
+        defDate.append(dateArray[i])
+        def.set(defArray, forKey: "\(clientData.Name) Index")
+        def.set(defDate, forKey: "\(clientData.Name) Date")
+        
+        textView.text! += "\n\(selectedArray[i].service)\n"
         i += 1
     }
     
@@ -143,15 +171,19 @@ class ServicesViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
         if(selectedArray.count > 0)
         {
             selectedArray.removeLast()
-            selectPriceArray.removeLast()
             dateArray.removeLast()
+            defArray.removeLast()
+            defDate.removeLast()
+            def.set(defArray, forKey: "\(clientData.Name) Index")
+            def.set(defDate, forKey: "\(clientData.Name) Date")
+            
             i -= 1
             
             if(selectedArray.count != 0)
             {
                 for index in (0 ... (selectedArray.count-1))
                 {
-                    textView.text! += "\n\(selectedArray[index])\n"
+                    textView.text! += "\n\(selectedArray[index].service)\n"
                 }
             }
         }
@@ -174,7 +206,6 @@ class ServicesViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
         self.performSegue(withIdentifier: "invoiceSegue", sender: self)
     }
     
-    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
@@ -185,7 +216,6 @@ class ServicesViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
             let viewController : InvoiceViewController = segue.destination as! InvoiceViewController
             
             viewController.servArray = self.selectedArray
-            viewController.priceArray = self.selectPriceArray
             viewController.dateArray = self.dateArray
             print("ending tip \(self.tipAmount)")
 
