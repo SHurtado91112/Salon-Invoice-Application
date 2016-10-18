@@ -6,9 +6,6 @@
 //  Copyright © 2016 Steven Hurtado. All rights reserved.
 //
 //
-//  TO DO: garbage clean up for removal of client
-//
-//
 
 import UIKit
 

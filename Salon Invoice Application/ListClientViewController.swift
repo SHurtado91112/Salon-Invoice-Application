@@ -9,7 +9,9 @@
 import UIKit
 
 class ListClientViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
-
+    
+    var dArray = [Int]()
+    var dDate  = [String]()
     
     var marrClientData : NSMutableArray!
     @IBOutlet weak var tbClientData: UITableView!
@@ -85,6 +87,9 @@ class ListClientViewController: UIViewController, UITableViewDataSource, UITable
         
         let clientData: ClientInfo = marrClientData.object(at: selectedIndex) as! ClientInfo
         
+        dArray = UserDefaults.standard.object(forKey: "\(clientData.Name) Index") as? [Int] ?? [Int]()
+        dDate  = UserDefaults.standard.object(forKey: "\(clientData.Name) Date") as? [String] ?? [String]()
+
         //action sheet for deletion of record
         let alert = UIAlertController(title: "Wait!", message: "Are you sure you want to delete this record?" as String, preferredStyle: .alert)
         let action1 = UIAlertAction(title: "Yes", style: .destructive)
@@ -92,6 +97,10 @@ class ListClientViewController: UIViewController, UITableViewDataSource, UITable
             
             let isDeleted = ModelManager.getInstance().deleteClientData(clientData)
             if isDeleted {
+                
+                self.dArray.removeAll()
+                self.dDate.removeAll()
+                
                 Util.invokeAlertMethod("", strBody: "Record deleted successfully.", delegate: nil)
             } else {
                 Util.invokeAlertMethod("", strBody: "Error in deleting record.", delegate: nil)
