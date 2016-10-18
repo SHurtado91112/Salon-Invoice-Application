@@ -88,8 +88,9 @@ class ListClientViewController: UIViewController, UITableViewDataSource, UITable
         let clientData: ClientInfo = marrClientData.object(at: selectedIndex) as! ClientInfo
         
         dArray = UserDefaults.standard.object(forKey: "\(clientData.Name) Index") as? [Int] ?? [Int]()
+        
         dDate  = UserDefaults.standard.object(forKey: "\(clientData.Name) Date") as? [String] ?? [String]()
-
+        
         //action sheet for deletion of record
         let alert = UIAlertController(title: "Wait!", message: "Are you sure you want to delete this record?" as String, preferredStyle: .alert)
         let action1 = UIAlertAction(title: "Yes", style: .destructive)
@@ -100,6 +101,9 @@ class ListClientViewController: UIViewController, UITableViewDataSource, UITable
                 
                 self.dArray.removeAll()
                 self.dDate.removeAll()
+                
+                UserDefaults.standard.set(self.dArray, forKey: "\(clientData.Name) Index")
+                UserDefaults.standard.set(self.dDate, forKey: "\(clientData.Name) Date")
                 
                 Util.invokeAlertMethod("", strBody: "Record deleted successfully.", delegate: nil)
             } else {
