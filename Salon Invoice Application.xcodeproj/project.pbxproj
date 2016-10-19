@@ -30,6 +30,10 @@
 		2887FF751D5AA94A0066C24F /* ServicesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2887FF741D5AA94A0066C24F /* ServicesViewController.swift */; };
 		2887FF771D5AAC2F0066C24F /* Salon.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 2887FF761D5AAC2F0066C24F /* Salon.sqlite */; };
 		289F30471D5FD5C200E54B0D /* InvoiceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 289F30461D5FD5C200E54B0D /* InvoiceCell.swift */; };
+		28B31F8A1DB6C06900FFA70C /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28B31F881DB6C06900FFA70C /* CalendarViewController.swift */; };
+		28B31F8B1DB6C06900FFA70C /* CellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28B31F891DB6C06900FFA70C /* CellView.swift */; };
+		28B31F8D1DB6C7C800FFA70C /* AppointmentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28B31F8C1DB6C7C800FFA70C /* AppointmentViewController.swift */; };
+		28B31F8F1DB6DE0300FFA70C /* AppointmentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28B31F8E1DB6DE0300FFA70C /* AppointmentTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -65,6 +69,10 @@
 		2887FF741D5AA94A0066C24F /* ServicesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServicesViewController.swift; sourceTree = "<group>"; };
 		2887FF761D5AAC2F0066C24F /* Salon.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; name = Salon.sqlite; path = "Salon Invoice Application/Salon.sqlite"; sourceTree = "<group>"; };
 		289F30461D5FD5C200E54B0D /* InvoiceCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = InvoiceCell.swift; path = "Salon Invoice Application/InvoiceCell.swift"; sourceTree = "<group>"; };
+		28B31F881DB6C06900FFA70C /* CalendarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CalendarViewController.swift; path = ../CalendarTrial/CalendarTrial/CalendarViewController.swift; sourceTree = "<group>"; };
+		28B31F891DB6C06900FFA70C /* CellView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CellView.swift; path = ../CalendarTrial/CalendarTrial/CellView.swift; sourceTree = "<group>"; };
+		28B31F8C1DB6C7C800FFA70C /* AppointmentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppointmentViewController.swift; path = "Salon Invoice Application/AppointmentViewController.swift"; sourceTree = "<group>"; };
+		28B31F8E1DB6DE0300FFA70C /* AppointmentTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppointmentTableViewCell.swift; path = "Salon Invoice Application/AppointmentTableViewCell.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,6 +91,7 @@
 			isa = PBXGroup;
 			children = (
 				2887FF311D5A8B730066C24F /* AppDelegate.swift */,
+				28B31F871DB6C04B00FFA70C /* Calendar */,
 				2887FF6F1D5AA7D30066C24F /* Manager/Utilities */,
 				2887FF6D1D5AA7B50066C24F /* Resources */,
 				2887FF661D5AA7340066C24F /* Info.plist */,
@@ -155,6 +164,17 @@
 				2887FF761D5AAC2F0066C24F /* Salon.sqlite */,
 			);
 			name = Manager/Utilities;
+			sourceTree = "<group>";
+		};
+		28B31F871DB6C04B00FFA70C /* Calendar */ = {
+			isa = PBXGroup;
+			children = (
+				28B31F881DB6C06900FFA70C /* CalendarViewController.swift */,
+				28B31F8C1DB6C7C800FFA70C /* AppointmentViewController.swift */,
+				28B31F8E1DB6DE0300FFA70C /* AppointmentTableViewCell.swift */,
+				28B31F891DB6C06900FFA70C /* CellView.swift */,
+			);
+			name = Calendar;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -234,21 +254,25 @@
 			files = (
 				2887FF711D5AA8B20066C24F /* NewClientViewController.swift in Sources */,
 				289F30471D5FD5C200E54B0D /* InvoiceCell.swift in Sources */,
+				28B31F8F1DB6DE0300FFA70C /* AppointmentTableViewCell.swift in Sources */,
 				2887FF521D5AA5E30066C24F /* ModelManager.swift in Sources */,
 				2887FF541D5AA60B0066C24F /* Util.swift in Sources */,
 				2887FF751D5AA94A0066C24F /* ServicesViewController.swift in Sources */,
 				2887FF731D5AA8FA0066C24F /* ListClientViewController.swift in Sources */,
 				2887FF591D5AA6BE0066C24F /* ClientCell.swift in Sources */,
 				2887FF671D5AA7340066C24F /* FMDatabase.m in Sources */,
+				28B31F8D1DB6C7C800FFA70C /* AppointmentViewController.swift in Sources */,
 				2887FF691D5AA7340066C24F /* FMDatabasePool.m in Sources */,
 				282182171D5D7958006442AA /* InvoiceViewController.swift in Sources */,
 				2887FF6A1D5AA7340066C24F /* FMDatabaseQueue.m in Sources */,
 				2881F92A1D83644E006C4DD5 /* HomeViewController.swift in Sources */,
+				28B31F8A1DB6C06900FFA70C /* CalendarViewController.swift in Sources */,
 				2881F92C1D836BAC006C4DD5 /* SettingsViewController.swift in Sources */,
 				2887FF561D5AA6650066C24F /* ClientInfo.swift in Sources */,
 				2887FF6B1D5AA7340066C24F /* FMResultSet.m in Sources */,
 				2887FF321D5A8B730066C24F /* AppDelegate.swift in Sources */,
 				2887FF681D5AA7340066C24F /* FMDatabaseAdditions.m in Sources */,
+				28B31F8B1DB6C06900FFA70C /* CellView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

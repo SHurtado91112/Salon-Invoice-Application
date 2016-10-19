@@ -16,7 +16,8 @@ class ListClientViewController: UIViewController, UITableViewDataSource, UITable
     var marrClientData : NSMutableArray!
     @IBOutlet weak var tbClientData: UITableView!
     
-    override func viewDidLoad() {
+    override func viewDidLoad()
+    {
         super.viewDidLoad()
         
         tbClientData.backgroundView = nil

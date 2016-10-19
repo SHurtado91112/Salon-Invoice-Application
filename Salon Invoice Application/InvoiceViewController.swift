@@ -19,6 +19,7 @@ class InvoiceViewController: UIViewController, UITableViewDataSource, UITableVie
     var technician : String = ""
     var marrClientData : NSMutableArray!
     
+    let format = DateFormatter()
     var date = Date()
     var currentDate = ""
     
@@ -48,7 +49,6 @@ class InvoiceViewController: UIViewController, UITableViewDataSource, UITableVie
         
         printButton.layer.cornerRadius = 10
         
-        let format = DateFormatter()
         format.dateFormat = "MM/dd/YYYY"
         
         currentDate = format.string(from: date)
@@ -127,7 +127,15 @@ class InvoiceViewController: UIViewController, UITableViewDataSource, UITableVie
             cell.backgroundColor = UIColor.white
             
             cell.serviceLbl.text = servArray[(indexPath as NSIndexPath).row - 1].service
-            cell.dateLbl.text = dateArray[(indexPath as NSIndexPath).row - 1]
+            
+            var tempDate = dateArray[(indexPath as NSIndexPath).row - 1]
+            
+            let parseIndex = tempDate.index(tempDate.startIndex, offsetBy: 10)
+            
+            tempDate = tempDate.substring(to: parseIndex)
+            
+            cell.dateLbl.text = tempDate
+            
             cell.amountLbl.text = String(format: "$%.2f", Double(servArray[(indexPath as NSIndexPath).row - 1].price))
         }
         

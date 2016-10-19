@@ -53,7 +53,7 @@ class ServicesViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
         tipTextField.delegate = self
         technicianTextField.delegate = self
         
-        format.dateFormat = "MM/dd/YYYY"
+        format.dateFormat = "MM/dd/YYYY, H:mm"
         
         textView.text! = "Selected Services: \n"
         picker.delegate = self
@@ -90,7 +90,8 @@ class ServicesViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
         
         dater.setValue(textColor, forKeyPath: "textColor")
         dater.datePickerMode = .countDownTimer
-        dater.datePickerMode = .date
+        dater.datePickerMode = .dateAndTime
+        dater.minuteInterval = 5
     }
 
     //03 textfield func for the return key
