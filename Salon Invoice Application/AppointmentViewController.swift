@@ -8,7 +8,7 @@
 
 import UIKit
 
-class AppointmentViewController: UIViewController
+class AppointmentViewController: UIViewController, UITableViewDelegate, UITableViewDataSource
 {
 
     var marrClientData : NSMutableArray!
@@ -20,10 +20,16 @@ class AppointmentViewController: UIViewController
     var year    : Int!
     var hourMin : String!
     
+    let def = UserDefaults.standard
+    var serviceArray = [Int]()
+    var dateArray    = [String]()
+    
+    var clientInfo = ClientInfo()
     
     override func viewDidLoad()
     {
         super.viewDidLoad()
+        
         tbAppointments.backgroundView = nil
         tbAppointments.backgroundColor = UIColor.clear
         tbAppointments.separatorColor = UIColor.clear
@@ -54,26 +60,90 @@ class AppointmentViewController: UIViewController
         // Dispose of any resources that can be recreated.
     }
     
+
+    func numberOfSections(in tableView: UITableView) -> Int
+    {
+        return marrClientData.count
+    }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
-        return marrClientData.count
+        clientInfo = marrClientData.object(at: section) as! ClientInfo
+        
+        dateArray = def.object(forKey: "\(clientInfo.Name) Date") as? [String] ?? [String]()
+        serviceArray = def.object(forKey:  "\(clientInfo.Name) Index") as? [Int] ?? [Int]()
+        
+        return serviceArray.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
     {
         let cell:AppointmentTableViewCell = tableView.dequeueReusableCell(withIdentifier: "cellApp") as! AppointmentTableViewCell
-        let client:ClientInfo = marrClientData.object(at: (indexPath as NSIndexPath).row) as! ClientInfo
+//        let client:ClientInfo = marrClientData.object(at: (indexPath as NSIndexPath).row) as! ClientInfo
         
         cell.backgroundView = nil
         cell.backgroundColor = UIColor.clear
         
-        cell.clientLabel.text = "\(client.Name)"
-//        cell.timeLabel.text = "\(time)"
+        hourMin = getTime(row: indexPath.row)
+        
+        cell.clientLabel.text = "\(clientInfo.Name)"
+        cell.timeLabel.text = hourMin
         cell.btnDelete.tag = (indexPath as NSIndexPath).row
         return cell
     }
 
+    func getTime(row: Int) -> String
+    {
+        var tempDate = dateArray[row]
+        
+        var parseIndex = tempDate.index(tempDate.startIndex, offsetBy: 12)
+        tempDate = tempDate.substring(from: parseIndex)
+        
+        if(tempDate.characters.count%2 == 0)
+        {
+            let temp = tempDate
+            tempDate = "0"
+            tempDate += temp
+        }
+        
+        parseIndex = tempDate.index(tempDate.startIndex, offsetBy: 2)
+        let tempInt = Int(tempDate.substring(to: parseIndex))
+        
+        tempDate = tempDate.substring(from: parseIndex)
+        
+        var stringToBuild = ""
+        print("Int parsed: \(tempInt)")
+        
+        if(tempInt! == 0)
+        {
+            stringToBuild = "12"
+            stringToBuild += tempDate
+            stringToBuild += " AM"
+        }
+        else if(tempInt! < 12)
+        {
+            stringToBuild += String(tempInt!)
+            stringToBuild += tempDate
+            stringToBuild += " AM"
+        }
+        else if(tempInt! == 12)
+        {
+            stringToBuild += String(tempInt!)
+            stringToBuild += tempDate
+            stringToBuild += " PM"
+        }
+        else
+        {
+            stringToBuild += String(tempInt! - 12)
+            stringToBuild += tempDate
+            stringToBuild += " PM"
+        }
+        
+        print("Time : \(stringToBuild)")
+        
+        
+        return stringToBuild
+    }
 
 
     /*
