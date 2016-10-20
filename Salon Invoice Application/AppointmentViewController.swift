@@ -12,16 +12,16 @@ class AppointmentViewController: UIViewController, UITableViewDelegate, UITableV
 {
 
     var marrClientData : NSMutableArray!
-    
+    var verifiedArray  : [String] = []
     @IBOutlet weak var tbAppointments: UITableView!
     
-    var month   : Int!
-    var day     : Int!
-    var year    : Int!
-    var hourMin : String!
+    var month   = ""
+    var day     = ""
+    var year    = ""
+    var hourMin : String = ""
     
     let def = UserDefaults.standard
-    var serviceArray = [Int]()
+    var selectedArray = [Int]()
     var dateArray    = [String]()
     
     var clientInfo = ClientInfo()
@@ -63,23 +63,47 @@ class AppointmentViewController: UIViewController, UITableViewDelegate, UITableV
 
     func numberOfSections(in tableView: UITableView) -> Int
     {
+        print("Clients: \(marrClientData.count)")
         return marrClientData.count
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
         clientInfo = marrClientData.object(at: section) as! ClientInfo
-        
+     
         dateArray = def.object(forKey: "\(clientInfo.Name) Date") as? [String] ?? [String]()
-        serviceArray = def.object(forKey:  "\(clientInfo.Name) Index") as? [Int] ?? [Int]()
+        selectedArray = def.object(forKey:  "\(clientInfo.Name) Index") as? [Int] ?? [Int]()
         
-        return serviceArray.count
+        print("\nSection: \(section)")
+        print("Name: \(clientInfo.Name)")
+        
+        verifiedArray = getVerified()
+        
+        print("Array Count: \(verifiedArray.count)\n")
+        
+        return verifiedArray.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
     {
         let cell:AppointmentTableViewCell = tableView.dequeueReusableCell(withIdentifier: "cellApp") as! AppointmentTableViewCell
-//        let client:ClientInfo = marrClientData.object(at: (indexPath as NSIndexPath).row) as! ClientInfo
+        
+        clientInfo = marrClientData.object(at: (indexPath as NSIndexPath).section) as! ClientInfo
+        
+        dateArray = def.object(forKey: "\(clientInfo.Name) Date") as? [String] ?? [String]()
+        selectedArray = def.object(forKey:  "\(clientInfo.Name) Index") as? [Int] ?? [Int]()
+        
+        verifiedArray = getVerified()
+        
+        if(verifiedArray.count > 0)
+        {
+            print("verified count: \(verifiedArray.count)")
+            
+            for i in (0...verifiedArray.count-1)
+            {
+                print("\(verifiedArray[i])")
+            }
+        }
         
         cell.backgroundView = nil
         cell.backgroundColor = UIColor.clear
@@ -92,57 +116,53 @@ class AppointmentViewController: UIViewController, UITableViewDelegate, UITableV
         return cell
     }
 
+    func getVerified() -> [String]
+    {
+        var verified = [String]()
+        
+        if(dateArray.count > 0)
+        {
+            
+            for i in (0...dateArray.count-1)
+            {
+                //month checking
+                var monthString = dateArray[i]
+                var parseIndex = monthString.index(monthString.startIndex, offsetBy: 2)
+                monthString = monthString.substring(to: parseIndex)
+                
+                //day checking
+                var dayString = dateArray[i]
+                parseIndex = dayString.index(parseIndex, offsetBy: 1)
+                dayString = dayString.substring(from: parseIndex)
+                parseIndex = dayString.index(dayString.startIndex, offsetBy: 2)
+                dayString = dayString.substring(to: parseIndex)
+                
+                //year checking
+                var yearString = dateArray[i]
+                parseIndex = yearString.index(yearString.startIndex, offsetBy: 6)
+                yearString = yearString.substring(from: parseIndex)
+                parseIndex = yearString.index(yearString.startIndex, offsetBy: 4)
+                yearString = yearString.substring(to: parseIndex)
+                
+                if(monthString == self.month && dayString == self.day && yearString == self.year)
+                {
+                    verified.append(dateArray[i])
+                }
+                
+            }
+        }
+        
+        return verified
+    }
+    
     func getTime(row: Int) -> String
     {
-        var tempDate = dateArray[row]
+        var tempDate = verifiedArray[row]
         
-        var parseIndex = tempDate.index(tempDate.startIndex, offsetBy: 12)
+        let parseIndex = tempDate.index(tempDate.startIndex, offsetBy: 12)
         tempDate = tempDate.substring(from: parseIndex)
         
-        if(tempDate.characters.count%2 == 0)
-        {
-            let temp = tempDate
-            tempDate = "0"
-            tempDate += temp
-        }
-        
-        parseIndex = tempDate.index(tempDate.startIndex, offsetBy: 2)
-        let tempInt = Int(tempDate.substring(to: parseIndex))
-        
-        tempDate = tempDate.substring(from: parseIndex)
-        
-        var stringToBuild = ""
-        print("Int parsed: \(tempInt)")
-        
-        if(tempInt! == 0)
-        {
-            stringToBuild = "12"
-            stringToBuild += tempDate
-            stringToBuild += " AM"
-        }
-        else if(tempInt! < 12)
-        {
-            stringToBuild += String(tempInt!)
-            stringToBuild += tempDate
-            stringToBuild += " AM"
-        }
-        else if(tempInt! == 12)
-        {
-            stringToBuild += String(tempInt!)
-            stringToBuild += tempDate
-            stringToBuild += " PM"
-        }
-        else
-        {
-            stringToBuild += String(tempInt! - 12)
-            stringToBuild += tempDate
-            stringToBuild += " PM"
-        }
-        
-        print("Time : \(stringToBuild)")
-        
-        
-        return stringToBuild
+        return tempDate
     }
 
 

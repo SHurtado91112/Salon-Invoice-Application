@@ -53,7 +53,7 @@ class ServicesViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
         tipTextField.delegate = self
         technicianTextField.delegate = self
         
-        format.dateFormat = "MM/dd/YYYY, H:mm"
+        format.dateFormat = "MM/dd/YYYY, hh:mm a"
         
         textView.text! = "Selected Services: \n"
         picker.delegate = self
@@ -92,6 +92,7 @@ class ServicesViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
         dater.datePickerMode = .countDownTimer
         dater.datePickerMode = .dateAndTime
         dater.minuteInterval = 5
+        
     }
 
     //03 textfield func for the return key
@@ -149,9 +150,10 @@ class ServicesViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
     
     @IBAction func addBtnClicked(_ sender: AnyObject)
     {
-        print("index: \(i)")
-        
         selectedArray.append(serviceArray[selectedRow])
+        
+        print(dater.date)
+        print(format.string(from: dater.date))
         dateArray.append(format.string(from: dater.date))
         defArray.append(selectedRow)
         defDate.append(dateArray[i])
