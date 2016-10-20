@@ -61,6 +61,18 @@ class ServicesViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
         picker.showsSelectionIndicator = false
         
         serviceArray = [("Men's Haircut", 15), ("Beard or Mustache Trim", 5), ("Women's Haircut", 20), ("Women's Haircut, Shampoo", 25), ("Shampoo Only", 5), ("Shampoo & Set", 20), ("Shampoo, Blowdry, Style", 20), ("Shampoo, Cut, Style", 35), ("Color, Shampoo, Style", 45), ("Color, Shampoo, Cut, Style", 55), ("Permanent", 65), ("Highlights, Shampoo, Cut, Style", 65), ("Re-Comb", 5), ("Regular Manicure", 14), ("Pedicure", 25), ("French Manicure", 16), ("Deluxe Manicure", 18), ("Eyebrow Shaping", 7), ("Eyebrow Waxing", 7), ("Lip Waxing", 7), ("Face Waxing", 10), ("All Three Waxing", 18)]
+       
+        var servTemp  : [String] = []
+        var priceTemp : [Int]    = []
+        
+        for i in (0...serviceArray.count-1)
+        {
+            servTemp.append(serviceArray[i].service)
+            priceTemp.append(serviceArray[i].price)
+        }
+        
+        def.set(servTemp, forKey: "Service Array")
+        def.set(priceTemp, forKey: "Price Array")
         
         defArray = def.object(forKey: "\(clientData.Name) Index") as? [Int] ?? [Int]()
         defDate  = def.object(forKey: "\(clientData.Name) Date") as? [String] ?? [String]()

@@ -12,7 +12,7 @@ class AppointmentViewController: UIViewController, UITableViewDelegate, UITableV
 {
 
     var marrClientData : NSMutableArray!
-    var verifiedArray  : [String] = []
+    var verifiedArray  : [(String, Int)] = []
     @IBOutlet weak var tbAppointments: UITableView!
     
     var month   = ""
@@ -23,12 +23,24 @@ class AppointmentViewController: UIViewController, UITableViewDelegate, UITableV
     let def = UserDefaults.standard
     var selectedArray = [Int]()
     var dateArray    = [String]()
+    var serviceArray : [(String, Int)] = []
     
     var clientInfo = ClientInfo()
     
     override func viewDidLoad()
     {
         super.viewDidLoad()
+        
+        var servTemp = [String]()
+        servTemp = def.object(forKey: "Service Array") as! [String]
+        var priceTemp = [Int]()
+        priceTemp = def.object(forKey: "Price Array") as! [Int]
+        
+        
+        for i in (0...servTemp.count-1)
+        {
+            serviceArray.append((servTemp[i], priceTemp[i]))
+        }
         
         tbAppointments.backgroundView = nil
         tbAppointments.backgroundColor = UIColor.clear
@@ -112,13 +124,14 @@ class AppointmentViewController: UIViewController, UITableViewDelegate, UITableV
         
         cell.clientLabel.text = "\(clientInfo.Name)"
         cell.timeLabel.text = hourMin
+        cell.serviceLabel.text = "\t\(serviceArray[verifiedArray[indexPath.row].1].0)"
         cell.btnDelete.tag = (indexPath as NSIndexPath).row
         return cell
     }
 
-    func getVerified() -> [String]
+    func getVerified() -> [(String, Int)]
     {
-        var verified = [String]()
+        var verified = [(String, Int)]()
         
         if(dateArray.count > 0)
         {
@@ -146,7 +159,7 @@ class AppointmentViewController: UIViewController, UITableViewDelegate, UITableV
                 
                 if(monthString == self.month && dayString == self.day && yearString == self.year)
                 {
-                    verified.append(dateArray[i])
+                    verified.append((dateArray[i], selectedArray[i]))
                 }
                 
             }
@@ -157,7 +170,7 @@ class AppointmentViewController: UIViewController, UITableViewDelegate, UITableV
     
     func getTime(row: Int) -> String
     {
-        var tempDate = verifiedArray[row]
+        var tempDate = verifiedArray[row].0
         
         let parseIndex = tempDate.index(tempDate.startIndex, offsetBy: 12)
         tempDate = tempDate.substring(from: parseIndex)
@@ -165,6 +178,47 @@ class AppointmentViewController: UIViewController, UITableViewDelegate, UITableV
         return tempDate
     }
 
+    @IBAction func deleteCell(_ sender: AnyObject)
+    {
+//        let btnDelete : UIButton = sender as! UIButton
+//        let selectedIndex : Int = btnDelete.tag
+//        
+//        let clientData: ClientInfo = marrClientData.object(at: selectedIndex) as! ClientInfo
+//        
+//        dArray = UserDefaults.standard.object(forKey: "\(clientData.Name) Index") as? [Int] ?? [Int]()
+//        
+//        dDate  = UserDefaults.standard.object(forKey: "\(clientData.Name) Date") as? [String] ?? [String]()
+//        
+//        //action sheet for deletion of record
+//        let alert = UIAlertController(title: "Wait!", message: "Are you sure you want to delete this record?" as String, preferredStyle: .alert)
+//        let action1 = UIAlertAction(title: "Yes", style: .destructive)
+//        { _ in
+//            
+//            let isDeleted = ModelManager.getInstance().deleteClientData(clientData)
+//            if isDeleted {
+//                
+//                self.dArray.removeAll()
+//                self.dDate.removeAll()
+//                
+//                UserDefaults.standard.set(self.dArray, forKey: "\(clientData.Name) Index")
+//                UserDefaults.standard.set(self.dDate, forKey: "\(clientData.Name) Date")
+//                
+//                Util.invokeAlertMethod("", strBody: "Record deleted successfully.", delegate: nil)
+//            } else {
+//                Util.invokeAlertMethod("", strBody: "Error in deleting record.", delegate: nil)
+//            }
+//            self.getClientData()
+//        }
+//        let action2 = UIAlertAction(title: "No", style: .default)
+//        { _ in
+//            Util.invokeAlertMethod("", strBody: "Record not deleted.", delegate: nil)
+//        }
+//        
+//        alert.addAction(action1)
+//        alert.addAction(action2)
+//        
+//        self.present(alert, animated: true){}
+    }
 
     /*
     // MARK: - Navigation

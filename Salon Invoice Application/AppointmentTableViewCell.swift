@@ -16,12 +16,15 @@ class AppointmentTableViewCell: UITableViewCell
     
     @IBOutlet weak var btnDelete: UIButton!
     
+    @IBOutlet weak var serviceLabel: UILabel!
+    
     override func awakeFromNib()
     {
         super.awakeFromNib()
         // Initialization code
         btnDelete.layer.cornerRadius = 10
-        
+        serviceLabel.layer.masksToBounds = true
+        serviceLabel.layer.cornerRadius = 10
     }
 
     override func setSelected(_ selected: Bool, animated: Bool)
