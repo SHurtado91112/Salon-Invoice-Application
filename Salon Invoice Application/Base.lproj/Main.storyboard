@@ -214,7 +214,7 @@
                                                         <color key="titleColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     </state>
                                                     <connections>
-                                                        <action selector="deleteCell:" destination="p51-6Y-LGP" eventType="touchUpInside" id="onn-85-KCI"/>
+                                                        <action selector="deleteCell:" destination="p51-6Y-LGP" eventType="touchUpInside" id="rSM-TB-JiL"/>
                                                     </connections>
                                                 </button>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Time" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5dt-Yk-Ips">
@@ -236,7 +236,7 @@
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" red="0.52549019610000003" green="0.56470588239999997" blue="1" alpha="0.16497844827586206" colorSpace="calibratedRGB"/>
                                         <connections>
-                                            <outlet property="btnDelete" destination="vGC-zB-GeD" id="5iF-eg-1AI"/>
+                                            <outlet property="btnDelete" destination="vGC-zB-GeD" id="0af-Bp-ICD"/>
                                             <outlet property="clientLabel" destination="pBE-aZ-f3x" id="cwM-Rm-EGU"/>
                                             <outlet property="serviceLabel" destination="27K-Kc-vaI" id="qT8-y6-ATw"/>
                                             <outlet property="timeLabel" destination="5dt-Yk-Ips" id="7DL-Qd-N0a"/>
@@ -1785,25 +1785,6 @@ Phone</string>
                                             <frame key="frameInset" width="375" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xkv-hd-svv">
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" constant="148" id="Odr-eL-2fp"/>
-                                                        <constraint firstAttribute="height" constant="30" id="Vjr-OR-Ujp"/>
-                                                    </constraints>
-                                                    <fontDescription key="fontDescription" type="system" weight="light" pointSize="20"/>
-                                                    <state key="normal" title="Remove Client">
-                                                        <color key="titleColor" red="1" green="0.0" blue="0.0" alpha="0.75" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    </state>
-                                                    <variation key="widthClass=compact">
-                                                        <mask key="constraints">
-                                                            <exclude reference="Odr-eL-2fp"/>
-                                                            <exclude reference="Vjr-OR-Ujp"/>
-                                                        </mask>
-                                                    </variation>
-                                                    <connections>
-                                                        <action selector="removeBtnPressed:" destination="QV1-qQ-9ui" eventType="touchUpInside" id="tvm-X3-JtM"/>
-                                                    </connections>
-                                                </button>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Client" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IUn-Vz-ecd">
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="22" id="Jvh-Qi-oJd"/>
@@ -1858,7 +1839,7 @@ Phone</string>
                                                         </mask>
                                                     </variation>
                                                     <connections>
-                                                        <action selector="removeBtnPressed:" destination="QV1-qQ-9ui" eventType="touchUpInside" id="df1-HD-WJi"/>
+                                                        <action selector="removeBtnPressed:" destination="QV1-qQ-9ui" eventType="touchUpInside" id="B4K-i0-U0L"/>
                                                     </connections>
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ybn-WQ-6O3">
@@ -1898,15 +1879,12 @@ Phone</string>
                                                 </constraint>
                                                 <constraint firstItem="IUn-Vz-ecd" firstAttribute="top" secondItem="nhV-R8-PVY" secondAttribute="topMargin" constant="3" id="5z7-qW-kqK"/>
                                                 <constraint firstItem="IUn-Vz-ecd" firstAttribute="leading" secondItem="nhV-R8-PVY" secondAttribute="leadingMargin" constant="14" id="6GZ-Ab-VQE"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="xkv-hd-svv" secondAttribute="trailing" id="BaT-Hb-X2T"/>
                                                 <constraint firstItem="ybn-WQ-6O3" firstAttribute="top" secondItem="nhV-R8-PVY" secondAttribute="topMargin" constant="-2" id="C8S-FD-RGH"/>
                                                 <constraint firstItem="NSr-Uf-9fR" firstAttribute="top" secondItem="nhV-R8-PVY" secondAttribute="topMargin" constant="-2" id="E3V-ic-OwM"/>
-                                                <constraint firstItem="xkv-hd-svv" firstAttribute="leading" secondItem="ybn-WQ-6O3" secondAttribute="trailing" constant="28" id="NFe-x5-lPV"/>
                                                 <constraint firstItem="ybn-WQ-6O3" firstAttribute="leading" secondItem="IUn-Vz-ecd" secondAttribute="trailing" constant="8" id="Z5G-9n-usW"/>
                                                 <constraint firstItem="IUn-Vz-ecd" firstAttribute="leading" secondItem="nhV-R8-PVY" secondAttribute="leadingMargin" constant="14" id="bla-Jv-hGU"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="NSr-Uf-9fR" secondAttribute="trailing" id="eH0-eX-MpF"/>
                                                 <constraint firstItem="IUn-Vz-ecd" firstAttribute="top" secondItem="nhV-R8-PVY" secondAttribute="topMargin" constant="3" id="gFt-8H-cEv"/>
-                                                <constraint firstItem="xkv-hd-svv" firstAttribute="top" secondItem="nhV-R8-PVY" secondAttribute="topMargin" constant="-3" id="m3C-e3-AJ3"/>
                                                 <constraint firstItem="ybn-WQ-6O3" firstAttribute="top" secondItem="nhV-R8-PVY" secondAttribute="topMargin" constant="-3" id="oQn-Dj-D5M"/>
                                             </constraints>
                                             <variation key="default">
@@ -1924,7 +1902,6 @@ Phone</string>
                                             </variation>
                                             <variation key="widthClass=compact">
                                                 <mask key="subviews">
-                                                    <exclude reference="xkv-hd-svv"/>
                                                     <include reference="NSr-Uf-9fR"/>
                                                 </mask>
                                                 <mask key="constraints">
@@ -1932,9 +1909,6 @@ Phone</string>
                                                     <exclude reference="6GZ-Ab-VQE"/>
                                                     <include reference="bla-Jv-hGU"/>
                                                     <include reference="gFt-8H-cEv"/>
-                                                    <exclude reference="BaT-Hb-X2T"/>
-                                                    <exclude reference="NFe-x5-lPV"/>
-                                                    <exclude reference="m3C-e3-AJ3"/>
                                                     <include reference="C8S-FD-RGH"/>
                                                     <exclude reference="Z5G-9n-usW"/>
                                                     <exclude reference="oQn-Dj-D5M"/>
@@ -1945,7 +1919,7 @@ Phone</string>
                                             </variation>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="btnRemove" destination="xkv-hd-svv" id="5MJ-ij-ZgN"/>
+                                            <outlet property="btnRemove" destination="NSr-Uf-9fR" id="oI6-6m-khY"/>
                                             <outlet property="btnService" destination="ybn-WQ-6O3" id="NaL-zq-Pbp"/>
                                             <outlet property="lblContent" destination="IUn-Vz-ecd" id="oWK-O2-Wpf"/>
                                         </connections>

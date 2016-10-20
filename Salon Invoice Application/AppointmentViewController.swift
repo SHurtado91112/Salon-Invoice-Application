@@ -11,8 +11,10 @@ import UIKit
 class AppointmentViewController: UIViewController, UITableViewDelegate, UITableViewDataSource
 {
 
-    var marrClientData : NSMutableArray!
-    var verifiedArray  : [(String, Int)] = []
+    var marrClientData     : NSMutableArray!
+    var verifiedArray      : [(String, Int, String)] = []
+    var totalScheduleArray : [(date: String, index: Int, name: String, section: Int)] = []
+    
     @IBOutlet weak var tbAppointments: UITableView!
     
     var month   = ""
@@ -63,7 +65,7 @@ class AppointmentViewController: UIViewController, UITableViewDelegate, UITableV
 
     override func viewWillAppear(_ animated: Bool)
     {
-//        self.getClientData()
+        self.getClientData()
     }
 
     
@@ -72,6 +74,13 @@ class AppointmentViewController: UIViewController, UITableViewDelegate, UITableV
         // Dispose of any resources that can be recreated.
     }
     
+    func getClientData()
+    {
+        marrClientData = NSMutableArray()
+        totalScheduleArray = [(String, index: Int, name: String, section: Int)]()
+        marrClientData = ModelManager.getInstance().getAllClientData()
+        tbAppointments.reloadData()
+    }
 
     func numberOfSections(in tableView: UITableView) -> Int
     {
@@ -114,6 +123,7 @@ class AppointmentViewController: UIViewController, UITableViewDelegate, UITableV
             for i in (0...verifiedArray.count-1)
             {
                 print("\(verifiedArray[i])")
+                totalScheduleArray.append((verifiedArray[i].0,verifiedArray[i].1,verifiedArray[i].2, indexPath.section))
             }
         }
         
@@ -129,9 +139,9 @@ class AppointmentViewController: UIViewController, UITableViewDelegate, UITableV
         return cell
     }
 
-    func getVerified() -> [(String, Int)]
+    func getVerified() -> [(String, Int, String)]
     {
-        var verified = [(String, Int)]()
+        var verified = [(String, Int, String)]()
         
         if(dateArray.count > 0)
         {
@@ -159,7 +169,7 @@ class AppointmentViewController: UIViewController, UITableViewDelegate, UITableV
                 
                 if(monthString == self.month && dayString == self.day && yearString == self.year)
                 {
-                    verified.append((dateArray[i], selectedArray[i]))
+                    verified.append((dateArray[i], selectedArray[i], clientInfo.Name))
                 }
                 
             }
@@ -178,46 +188,97 @@ class AppointmentViewController: UIViewController, UITableViewDelegate, UITableV
         return tempDate
     }
 
+    func indexToRemove(sec: Int, ind: Int, name: String) -> Int
+    {
+        print("Size: \(dateArray.count)")
+        if(dateArray.count > 0)
+        {
+            for i in (0...dateArray.count-1)
+            {
+                
+                if(totalScheduleArray.count > 0)
+                {
+                    for j in (0...totalScheduleArray.count-1)
+                    {
+                        print("\(totalScheduleArray[j].date) == \(dateArray[i])")
+                        print("\(serviceArray[totalScheduleArray[j].index].0) == \(serviceArray[selectedArray[i]].0)")
+                        print("\(totalScheduleArray[j].name) == \(name)")
+                        print("\(totalScheduleArray[j].section) == \(sec)")
+
+                        
+                        if(totalScheduleArray[j].date == dateArray[i]
+                            && serviceArray[totalScheduleArray[j].index].0 == serviceArray[selectedArray[i]].0
+                            && totalScheduleArray[j].name == name
+                            && totalScheduleArray[j].section == sec)
+                        {
+                            print("\n\nFOUND MATCH\n\n")
+                            return i
+                        }
+                    }
+                }
+            }
+        }
+        
+        return -1
+    }
+    
     @IBAction func deleteCell(_ sender: AnyObject)
     {
-//        let btnDelete : UIButton = sender as! UIButton
-//        let selectedIndex : Int = btnDelete.tag
-//        
-//        let clientData: ClientInfo = marrClientData.object(at: selectedIndex) as! ClientInfo
-//        
-//        dArray = UserDefaults.standard.object(forKey: "\(clientData.Name) Index") as? [Int] ?? [Int]()
-//        
-//        dDate  = UserDefaults.standard.object(forKey: "\(clientData.Name) Date") as? [String] ?? [String]()
-//        
-//        //action sheet for deletion of record
-//        let alert = UIAlertController(title: "Wait!", message: "Are you sure you want to delete this record?" as String, preferredStyle: .alert)
-//        let action1 = UIAlertAction(title: "Yes", style: .destructive)
-//        { _ in
-//            
-//            let isDeleted = ModelManager.getInstance().deleteClientData(clientData)
-//            if isDeleted {
-//                
-//                self.dArray.removeAll()
-//                self.dDate.removeAll()
-//                
-//                UserDefaults.standard.set(self.dArray, forKey: "\(clientData.Name) Index")
-//                UserDefaults.standard.set(self.dDate, forKey: "\(clientData.Name) Date")
-//                
-//                Util.invokeAlertMethod("", strBody: "Record deleted successfully.", delegate: nil)
-//            } else {
-//                Util.invokeAlertMethod("", strBody: "Error in deleting record.", delegate: nil)
-//            }
-//            self.getClientData()
-//        }
-//        let action2 = UIAlertAction(title: "No", style: .default)
-//        { _ in
-//            Util.invokeAlertMethod("", strBody: "Record not deleted.", delegate: nil)
-//        }
-//        
-//        alert.addAction(action1)
-//        alert.addAction(action2)
-//        
-//        self.present(alert, animated: true){}
+        
+//        print(sender.superview??.superview)
+        let btnDelete : UIButton = sender as! UIButton
+        
+        let cell = btnDelete.superview?.superview! as! AppointmentTableViewCell
+        
+        let indPath = tbAppointments.indexPath(for: cell)
+        let section = indPath?.section
+        let row     = btnDelete.tag
+        
+        
+        let client = marrClientData[section!] as! ClientInfo
+        print("\(client.Name)")
+        
+        for i in (0...totalScheduleArray.count-1)
+        {
+            print(totalScheduleArray[i])
+        }
+        
+        selectedArray = UserDefaults.standard.object(forKey: "\(client.Name) Index") as? [Int] ?? [Int]()
+        
+        dateArray  = UserDefaults.standard.object(forKey: "\(client.Name) Date") as? [String] ?? [String]()
+        
+        //action sheet for deletion of record
+        let alert = UIAlertController(title: "Wait!", message: "Are you sure you want to delete this record?" as String, preferredStyle: .alert)
+        let action1 = UIAlertAction(title: "Yes", style: .destructive)
+        { _ in
+            
+            let index = self.indexToRemove(sec: section!, ind: row, name: client.Name)
+            if(index == -1)
+            {
+                Util.invokeAlertMethod("", strBody: "Error in deleting record.", delegate: nil)
+            }
+            else
+            {
+                print("To be deleted: \(client.Name)\nWith service: \(self.selectedArray[index])\nand date of: \(self.dateArray[index])")
+                self.selectedArray.remove(at: index)
+                self.dateArray.remove(at: index)
+                Util.invokeAlertMethod("", strBody: "Record deleted successfully.", delegate: nil)
+            }
+            
+            UserDefaults.standard.set(self.selectedArray, forKey: "\(client.Name) Index")
+            UserDefaults.standard.set(self.dateArray, forKey: "\(client.Name) Date")
+            
+            self.getClientData()
+        }
+        let action2 = UIAlertAction(title: "No", style: .default)
+        { _ in
+            Util.invokeAlertMethod("", strBody: "Record not deleted.", delegate: nil)
+        }
+        
+        alert.addAction(action1)
+        alert.addAction(action2)
+        
+        self.present(alert, animated: true){}
     }
 
     /*

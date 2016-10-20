@@ -88,6 +88,8 @@ class ListClientViewController: UIViewController, UITableViewDataSource, UITable
         
         let clientData: ClientInfo = marrClientData.object(at: selectedIndex) as! ClientInfo
         
+        print("\(selectedIndex) & Client : \(clientData.Name)")
+        
         dArray = UserDefaults.standard.object(forKey: "\(clientData.Name) Index") as? [Int] ?? [Int]()
         
         dDate  = UserDefaults.standard.object(forKey: "\(clientData.Name) Date") as? [String] ?? [String]()
