@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "3B0A295A56632159C293611F4FBDE6D89A4CD5D1",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "E72C5663358F0C9F6424F2EA6637F3774D0FA529" : 9223372036854775807,
+    "3B0A295A56632159C293611F4FBDE6D89A4CD5D1" : 9223372036854775807
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "652931D7-E2B5-4A2B-B8BC-9815F2184207",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "E72C5663358F0C9F6424F2EA6637F3774D0FA529" : "CalendarTrial\/",
+    "3B0A295A56632159C293611F4FBDE6D89A4CD5D1" : "Salon%20Invoice%20Application\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "Salon Invoice Application",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "Salon Invoice Application.xcodeproj",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/SHurtado91112\/Salon-Invoice-Application.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "3B0A295A56632159C293611F4FBDE6D89A4CD5D1"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/SHurtado91112\/Collection-View-Calendar.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "E72C5663358F0C9F6424F2EA6637F3774D0FA529"
+    }
+  ]
+}
